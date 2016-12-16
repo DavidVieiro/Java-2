@@ -17,6 +17,8 @@ public class ClasesAnimales1 {
     public static void main(String[] args) {
         
         Animal migato = new Animal();
+        Animal miperro = new Animal("Blanco");
+        
         migato.nace();
         
         migato.nombre = "Batman";
