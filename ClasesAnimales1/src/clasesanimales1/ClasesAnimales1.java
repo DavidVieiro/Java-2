@@ -21,11 +21,29 @@ public class ClasesAnimales1 {
         
         migato.nace();
         
-        migato.nombre = "Batman";
+        System.out.println("\n-- Gato --");
+        //migato.nombre = "Batman";
         migato.edad = 1;
+        migato.setEdad(3);
+        migato.setNombre("Micifu");
         
-        migato.getNombre();
+        System.out.println( migato.getNombre() );
+        //migato.getNombre();
         migato.getEdad();
+        
+        Pajaro unpajaro = new Pajaro();
+        
+        unpajaro.color = "Rojo";
+        unpajaro.peso = 32;
+        unpajaro.setNombre("Pio");
+        unpajaro.setEdad(2);
+        
+        System.out.println("\n-- Pajaro --");
+        System.out.println("NOMBRE --> " + unpajaro.getNombre());
+        System.out.print("EDAD --> ");
+        unpajaro.getEdad();
+        System.out.println("PESO --> " + unpajaro.peso);
+        System.out.println("COLOR --> " + unpajaro.color);
         
     }
     

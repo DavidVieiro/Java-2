@@ -12,14 +12,18 @@ package clasesanimales1;
 class Animal {
     
     int edad;
-    String nombre;
+    private String nombre;
     
     // Si queremos crear de dos formas diferentes tenemos que poner dos
     // Constructores diferentes.
+    
     Animal () {
         
     }
-    
+    /**
+     * 
+     * @param n 
+     */
     Animal ( String n ){
         nombre = n;
     }
@@ -28,11 +32,21 @@ class Animal {
         System.out.println("Hola Mundo");
     }
     
-    public void getNombre() {
-        System.out.println( nombre );
+    public String getNombre() {
+        //System.out.println( nombre );
+        
+        return nombre;
     }
     
     public void getEdad() {
         System.out.println( edad );
+    }
+    
+    public void setEdad ( int e ) {
+        edad = e;
+    }
+    
+    public void setNombre ( String n ) {
+        nombre = n;
     }
 }
