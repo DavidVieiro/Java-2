@@ -17,7 +17,7 @@ public class Ordenador {
     private String marca;
     private String procesador;
     private String pantalla;
-    boolean estado = false; // Encendido / apagado
+    private boolean estado = false; // Encendido / apagado
     
     // Constructores
     Ordenador ( String m, String pr ) {
