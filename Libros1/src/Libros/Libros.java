@@ -28,7 +28,7 @@ public class Libros {
     private String autor;
     private String editorial;
     private int anoPublicacion;
-    private double precio;
+    private float precio;
     
     // Constructores
     Libros ( String t, String a, String e ){
@@ -50,7 +50,7 @@ public class Libros {
         anoPublicacion = ap;
     }
     
-    public void asignarPrecio ( double pr ) {
+    public void asignarPrecio ( float pr ) {
         precio = pr;
     }
     

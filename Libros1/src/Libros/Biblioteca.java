@@ -18,12 +18,12 @@ public class Biblioteca {
         System.out.println("\n-- Libro 1 --");
         libro1.asignarEditorial("Alguna");
         libro1.asignarPublicacion( 1980 );
-        libro1.asignarPrecio( 19.99 );
+        libro1.asignarPrecio( 19.99F );
         libro1.mostrarLibro();
         
         System.out.println("\n-- Libro 2 --");
         libro2.asignarPublicacion( 1900 );
-        libro2.asignarPrecio( 5.99 );
+        libro2.asignarPrecio( 5.99F );
         libro2.mostrarLibro();
         
     }
