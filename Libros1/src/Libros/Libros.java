@@ -31,34 +31,34 @@ public class Libros {
     private float precio;
     
     // Constructores
-    Libros ( String t, String a, String e ){
-        titulo = t;
-        autor = a;
-        editorial = e;
+    Libros ( String titulo, String autor, String editorial ){
+        this.titulo = titulo;
+        this.autor = autor;
+        this.editorial = editorial;
     }
     
-    Libros ( String t, String a) {
-        titulo = t;
-        autor = a;
+    Libros ( String titulo, String autor ) {
+        this.titulo = titulo;
+        this.autor = autor;
     }
     
-    public void asignarEditorial ( String e ){
-        editorial = e;
+    public void asignarEditorial ( String editorial ){
+        this.editorial = editorial;
     }
     
-    public void asignarPublicacion ( int ap ) {
-        anoPublicacion = ap;
+    public void asignarPublicacion ( int anoPublicacion ) {
+        this.anoPublicacion = anoPublicacion;
     }
     
-    public void asignarPrecio ( float pr ) {
-        precio = pr;
+    public void asignarPrecio ( float precio ) {
+        this.precio = precio;
     }
     
     public void mostrarLibro () {
-        System.out.println("Titulo: " + titulo);
-        System.out.println("Autor: " + autor);
-        System.out.println("Editorial: " + editorial);
-        System.out.println("Año Publicacion: " + anoPublicacion);
-        System.out.println("Precio: " + precio + " €");
+        System.out.println("Titulo: "           + titulo);
+        System.out.println("Autor: "            + autor);
+        System.out.println("Editorial: "        + editorial);
+        System.out.println("Año Publicacion: "  + anoPublicacion);
+        System.out.println("Precio: "           + precio + " €");
     }
 }
