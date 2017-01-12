@@ -24,7 +24,6 @@ public class Divisas {
     double eurosDolares = 1.06557;
     double dolaresEuros = 0.93846;
     String cadena;
-    boolean continuar =  true;
     byte opcion;
     
     // Constructores
@@ -37,6 +36,8 @@ public class Divisas {
      * @throws java.io.IOException
      */
     public void menu () throws IOException {
+        
+        boolean continuar = true;
         
         do {
             
