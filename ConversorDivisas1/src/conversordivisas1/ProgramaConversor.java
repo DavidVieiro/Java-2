@@ -24,6 +24,8 @@ import java.io.IOException;
  * 
  * a) Crear métodos para poder establecer en el programa los valores de conversión
  * 
+ * TIP: ( Reutilizar la clase LeerDato del projecto Utilidades1 )
+ * 
  * @author dam132
  */
 public class ProgramaConversor {
@@ -34,16 +36,15 @@ public class ProgramaConversor {
      */
     public static void main(String[] args) throws IOException {
         
+        boolean menu;
+        
         Divisas cambio1 = new Divisas();
         
-        cambio1.menu();
-        
-//        System.out.println("Cambio de Euros a Libras: "  + cambio1.eurosLibras()  + " Libras\n\n" );
-//        System.out.println("Cambio de Libras a Euros: "  + cambio1.librasEuros()  + " Euros\n\n" );
-//        System.out.println("Cambio de Euros a Dolares: " + cambio1.eurosDolares() + " Dolares\n\n" );
-//        System.out.println("Cambio de Dolares a Euros: " + cambio1.dolaresEuros() + " Euros\n\n" );
-        
-        
+        do {
+            
+            menu = cambio1.menu();
+            
+        } while ( menu );
         
     }
     
