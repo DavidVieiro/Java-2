@@ -17,12 +17,16 @@ public class Divisas {
     
     static BufferedReader teclado = new BufferedReader( new InputStreamReader( System.in ) );
     
+    // Llamamos a la clase LeerDato
+    LeerDato leerDato1 = new LeerDato();
+    
     // Variables
     
     double eurosLibras  = 0.86628;
     double librasEuros  = 1.15436;
     double eurosDolares = 1.06557;
     double dolaresEuros = 0.93846;
+    
     String cadena;
     byte opcion, subOpcion;
     
@@ -33,116 +37,16 @@ public class Divisas {
     
     /**
      * 
-     * @return 
-     * @throws java.io.IOException
-     */
-    public boolean menu () throws IOException {
-        
-        boolean continuar = true;
-        
-        System.out.println("\nElige una opcion del menu:");
-        System.out.println("1 - Consultar las divisas actuales");
-        System.out.println("2 - Realizar conversiones de divisas");
-        System.out.println("3 - Cambiar el valor de las divisas");
-        System.out.println("4 - SALIR");
-
-        try {
-            this.opcion = Byte.parseByte(teclado.readLine());
-        }
-        catch ( NumberFormatException ex1 ) {
-            System.out.println("\nERROR: Introduce un valor numerico correcto...");
-        }
-
-        switch (opcion) {
-            case 1:
-                getDivisas();
-                break;
-            case 2:
-                subMenu();
-                break;
-            case 3:
-                setDivisas();
-                break;
-            case 4:
-                System.out.println("\n\nSaliendo del programa...");
-                continuar = false;
-                break;
-            default:
-                System.out.println("\nERROR: Introduce una opcion de menu correcta...");
-        }
-        
-        return continuar;
-    }
-    
-    /**
-     * 
-     * @throws java.io.IOException
-     */
-    public void subMenu () throws IOException {
-        
-        boolean atras = false;
-        
-        do {
-            System.out.println("\nElige una opcion del submenu:");
-            System.out.println("1 - Convertir de Euros a Libras"); 
-            System.out.println("2 - Convertir de Libras a Euros");
-            System.out.println("3 - Convertir de Euros a Dolares");
-            System.out.println("4 - Convertir de Dolares a Euros");
-            System.out.println("5 - VOLVER ATRAS");
-            
-            try {
-                this.subOpcion = Byte.parseByte(teclado.readLine());
-            }
-            catch ( NumberFormatException ex1 ) {
-                System.out.println("\nERROR: Introduce un valor numerico correcto...");
-            }
-            
-            switch ( subOpcion ) {
-                case 1:
-                    System.out.println("Cambio de Euros a Libras: "  + eurosLibras()  + " Libras" );
-                    break;
-                case 2:
-                    System.out.println("Cambio de Libras a Euros: "  + librasEuros()  + " Euros" );
-                    break;
-                case 3:
-                    System.out.println("Cambio de Euros a Dolares: " + eurosDolares() + " Dolares" );
-                    break;
-                case 4:
-                    System.out.println("Cambio de Dolares a Euros: " + dolaresEuros() + " Euros" );
-                    break;
-                case 5:
-                    System.out.println("Volviendo atras...");
-                    atras = true;
-                    break;
-                default:
-                    System.out.println("\nERROR: Introduce una opcion de menu correcta...");
-            }
-        } while ( !atras );
-    }
-    
-    /**
-     * 
      * @return Convierte el valor introducido en Euros a Libras
      * @throws java.io.IOException 
      */
     public double eurosLibras () throws IOException {
         
-        boolean sw;
-        double aux = 0;
+        double aux;
         
-        do {
-            try {
-                System.out.println("Introduce valor en Euros para convertirlo a Libras");
-                this.cadena = teclado.readLine();
-                aux = this.eurosLibras;
-                aux *= Double.parseDouble(cadena);
-                sw = true;
-            }
-            catch ( NumberFormatException ex1 ) {
-                System.out.println("\nERROR: Vuelve a introducir el valor.\n");
-                sw = false;
-            }
-        } while ( !sw );
+        System.out.println("Introduce valor en Euros para convertirlo a Libras");
+        aux = leerDato1.leerDouble();
+        aux *= this.eurosLibras;
         
         return aux;
     }
