@@ -32,6 +32,8 @@ public class PruebaStringB {
             System.out.println("Ejemplo de StringBuffer: '" + cad + "'");
             cad.delete(0, 7);
             System.out.println("Borrados 6 primeros caracteres: " + cad );
+            cad.replace( cad.length()-3, cad.length(), "da" );
+            System.out.println("Sustituidos ultimos caracteres: " + cad );
             cad.append("cadena");
             System.out.println("Apendizada con 'cadena': " + cad );
             System.out.println("Tiene capacidad de : " + cad.capacity() );
