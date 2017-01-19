@@ -24,6 +24,7 @@ public class Character1 {
     
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
         
@@ -38,7 +39,7 @@ public class Character1 {
         
         System.out.println("\n--- La longitud de la cadena es: " + cad.length() + " ---" );
         // isDigit() isLetter() isSpaceChar()
-        for ( int i = 0; i <= cad.length()-1; ++i ) {
+        for ( int i = 0; i < cad.length(); ++i ) {
             c = cad.charAt(i);
             if ( Character.isDigit( c ) ) {
                 System.out.println("El caracter en la posicion " + i + " es el NUMERO: " + c );
