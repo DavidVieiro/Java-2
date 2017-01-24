@@ -138,47 +138,60 @@ public class Nombre {
     
     /**
      * Nombre y Apellidos con la primera letra en mayuscula 
+     * @return 
      */
-    public void nombreYApellidos () {
+    public String nombreYApellidos () {
         
-        System.out.print( Character.toUpperCase( nombre.charAt(0) ) );
+        String nombreMinus, ape1Minus, ape2Minus, nombreCompleto;
+        // Mombre
+        nombreMinus = "" + Character.toUpperCase( nombre.charAt(0) ) ;
         for ( int i = 1; i < nombre.length(); ++i ) {
-            System.out.print( Character.toLowerCase( nombre.charAt(i) ) );
+            nombreMinus = nombreMinus + Character.toLowerCase( nombre.charAt( i ) );
         }
-
-        System.out.print( " " +  Character.toUpperCase( ape1.charAt(0) ) );
+        // Primer Apellido
+        ape1Minus = "" + Character.toUpperCase( ape1.charAt(0) ) ;
         for ( int i = 1; i < ape1.length(); ++i ) {
-            System.out.print( Character.toLowerCase( ape1.charAt(i) ) );
+            ape1Minus = ape1Minus + Character.toLowerCase( ape1.charAt( i ) );
         }
-
-        System.out.print(" " + Character.toUpperCase( ape2.charAt(0) ) );
+        // Segundo Apellido
+        ape2Minus = "" + Character.toUpperCase( ape2.charAt(0) ) ;
         for ( int i = 1; i < ape2.length(); ++i ) {
-            System.out.print( Character.toLowerCase( ape2.charAt(i) ) );
+            ape2Minus = ape2Minus + Character.toLowerCase( ape2.charAt( i ) );
         }
-        // Salto de linea por si acaso
-        System.out.println("");
+        // Concatenamos el nombre completo
+        nombreCompleto = nombreMinus + " " + ape1Minus + " " + ape2Minus;
+        
+        return nombreCompleto;
     }
     
     /**
      * Cadena con las iniciales en mayuscula
+     * @return 
      */
-    public void inicialesNombre () {
+    public String inicialesNombre () {
         
-        System.out.print( Character.toUpperCase( nombre.charAt(0) ) + "." );
-        System.out.print( Character.toUpperCase( ape1.charAt(0) )   + "." );
-        System.out.println( Character.toUpperCase( ape2.charAt(0) ) );
+        String iniciales;
+        
+        iniciales = Character.toUpperCase( nombre.charAt(0) ) + "." +
+        Character.toUpperCase( ape1.charAt(0) ) + "." +
+        Character.toUpperCase( ape2.charAt(0) );
+        
+        return iniciales;
     }
     
     /**
-     * Ponemos el nombre en minusculas con la primera letra en mayusculas.
+     * Devolvemos el nombre en minusculas con la primera letra en mayusculas.
+     * @return 
      */
-    public void nombreMinusculas () {
+    public String nombreMinusculas () {
         
-        System.out.print( Character.toUpperCase( nombre.charAt(0) ) );
+        String nombreMinus;
+        
+        nombreMinus = "" + Character.toUpperCase( nombre.charAt(0) ) ;
         for ( int i = 1; i < nombre.length(); ++i ) {
-            System.out.print( Character.toLowerCase( nombre.charAt(i) ) );
+            nombreMinus = nombreMinus + Character.toLowerCase( nombre.charAt( i ) );
         }
-        // Salto de linea por si acaso
-        System.out.println("");
+        
+        return nombreMinus;
     }
 }

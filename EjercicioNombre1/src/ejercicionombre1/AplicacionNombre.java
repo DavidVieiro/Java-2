@@ -49,13 +49,14 @@ public class AplicacionNombre {
         nombre1.setApe2( ape2 );
         
         System.out.println("\nNombre y Apellidos");
-        nombre1.nombreYApellidos();
+        System.out.println( nombre1.nombreYApellidos() );
         
         System.out.println("\nIniciales en mayusculas");
-        nombre1.inicialesNombre();
+        System.out.println( nombre1.inicialesNombre() );
         
         System.out.println("\nNombre en minuscula");
-        nombre1.nombreMinusculas();
+        System.out.println( nombre1.nombreMinusculas() );
+        
     }
     
 }
