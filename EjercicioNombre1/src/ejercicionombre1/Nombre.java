@@ -142,22 +142,32 @@ public class Nombre {
      */
     public String nombreYApellidos () {
         
-        String nombreMinus, ape1Minus, ape2Minus, nombreCompleto;
-        // Mombre
-        nombreMinus = "" + Character.toUpperCase( nombre.charAt(0) ) ;
-        for ( int i = 1; i < nombre.length(); ++i ) {
-            nombreMinus = nombreMinus + Character.toLowerCase( nombre.charAt( i ) );
+        String nombreMinus = "", ape1Minus = "", ape2Minus = "", nombreCompleto;
+        
+        try {
+            // Mombre
+            nombreMinus = "" + Character.toUpperCase( nombre.charAt(0) ) ;
+            for ( int i = 1; i < nombre.length(); ++i ) {
+                nombreMinus = nombreMinus + Character.toLowerCase( nombre.charAt( i ) );
+            }
+            // Primer Apellido
+            ape1Minus = "" + Character.toUpperCase( ape1.charAt(0) ) ;
+            for ( int i = 1; i < ape1.length(); ++i ) {
+                ape1Minus = ape1Minus + Character.toLowerCase( ape1.charAt( i ) );
+            }
+            // Segundo Apellido
+            ape2Minus = "" + Character.toUpperCase( ape2.charAt(0) ) ;
+            for ( int i = 1; i < ape2.length(); ++i ) {
+                ape2Minus = ape2Minus + Character.toLowerCase( ape2.charAt( i ) );
+            }
         }
-        // Primer Apellido
-        ape1Minus = "" + Character.toUpperCase( ape1.charAt(0) ) ;
-        for ( int i = 1; i < ape1.length(); ++i ) {
-            ape1Minus = ape1Minus + Character.toLowerCase( ape1.charAt( i ) );
+        catch ( StringIndexOutOfBoundsException ex1 ){
+            System.out.println("\n\nERROR: Indice fuera de rango...");
+            System.out.println(ex1);
         }
-        // Segundo Apellido
-        ape2Minus = "" + Character.toUpperCase( ape2.charAt(0) ) ;
-        for ( int i = 1; i < ape2.length(); ++i ) {
-            ape2Minus = ape2Minus + Character.toLowerCase( ape2.charAt( i ) );
-        }
+        
+        
+        
         // Concatenamos el nombre completo
         nombreCompleto = nombreMinus + " " + ape1Minus + " " + ape2Minus;
         
@@ -170,11 +180,17 @@ public class Nombre {
      */
     public String inicialesNombre () {
         
-        String iniciales;
+        String iniciales = "";
         
-        iniciales = Character.toUpperCase( nombre.charAt(0) ) + "." +
-        Character.toUpperCase( ape1.charAt(0) ) + "." +
-        Character.toUpperCase( ape2.charAt(0) );
+        try {
+            iniciales = Character.toUpperCase( nombre.charAt(0) ) + "." +
+            Character.toUpperCase( ape1.charAt(0) ) + "." +
+            Character.toUpperCase( ape2.charAt(0) );
+        }
+        catch ( StringIndexOutOfBoundsException ex1 ){
+            System.out.println("\n\nERROR: Indice fuera de rango...");
+            System.out.println(ex1);
+        }
         
         return iniciales;
     }
@@ -185,11 +201,17 @@ public class Nombre {
      */
     public String nombreMinusculas () {
         
-        String nombreMinus;
+        String nombreMinus = "";
         
-        nombreMinus = "" + Character.toUpperCase( nombre.charAt(0) ) ;
-        for ( int i = 1; i < nombre.length(); ++i ) {
-            nombreMinus = nombreMinus + Character.toLowerCase( nombre.charAt( i ) );
+        try {
+            nombreMinus = "" + Character.toUpperCase( nombre.charAt(0) ) ;
+            for ( int i = 1; i < nombre.length(); ++i ) {
+                nombreMinus = nombreMinus + Character.toLowerCase( nombre.charAt( i ) );
+            }
+        }
+        catch ( StringIndexOutOfBoundsException ex1 ){
+            System.out.println("\n\nERROR: Indice fuera de rango...");
+            System.out.println(ex1);
         }
         
         return nombreMinus;

@@ -33,14 +33,20 @@ public class AplicacionNombre {
      */
     public static void main(String[] args) throws IOException {
         
-        String nombre, ape1, ape2;
+        String nombre = null, ape1 = null, ape2 = null;
         
-        System.out.println("Introduce un nombre:");
-        nombre = teclado.readLine();
-        System.out.println("Introduce el primer apellido:");
-        ape1 = teclado.readLine();
-        System.out.println("Introduce el segundo apellido");
-        ape2 = teclado.readLine();
+        try {
+            System.out.println("Introduce un nombre:");
+            nombre = teclado.readLine();
+            System.out.println("Introduce el primer apellido:");
+            ape1 = teclado.readLine();
+            System.out.println("Introduce el segundo apellido");
+            ape2 = teclado.readLine();
+        }
+        catch ( Exception ex1) {
+            System.out.println("\n\nERROR: Se ha producido un error al introducir los datos... " + ex1);
+        }
+        
         
         Nombre nombre1 =  new Nombre ( nombre, ape1, ape2 );
         
