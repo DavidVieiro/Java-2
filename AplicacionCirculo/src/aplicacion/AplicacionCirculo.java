@@ -19,6 +19,23 @@ public class AplicacionCirculo {
     public static void main(String[] args) {
         
         Circulo circulo1 = new Circulo();
+        
+        // Seleccionar las dos lineas de salida de datos y crear un metodo
+        // Refactor / Introduce / Method
+        // Se crea el metodo y la llamada al metodo
+        circulo1.setRadio( 28 );
+        mostrar( circulo1 );
+                
+    }
+    /**
+     * Seleccionar las dos lineas de salida de datos y crear un metodo
+     * Refactor / Introduce / Method
+     * Se crea el metodo y la llamada al metodo
+     * @param circulo1 
+     */
+    private static void mostrar( Circulo circulo1 ) {
+        System.out.println("El área del círculo1 es " + circulo1.calcularArea() );
+        System.out.println("La longitud del círculo1 es " + circulo1.calcularLongitud() );
     }
     
 }

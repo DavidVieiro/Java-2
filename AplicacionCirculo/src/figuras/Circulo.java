@@ -13,35 +13,38 @@ public class Circulo {
     
     private float radio;
     String color="";
-
-    public Circulo(String color) {
+    /**
+     * 
+     * @param color 
+     */
+    public Circulo( String color ) {
         this.color = color;
     }
-
-    public Circulo(String color, float radio) {
+    /**
+     * 
+     * @param color
+     * @param radio 
+     */
+    public Circulo( String color, float radio ) {
         this.radio = radio;
         this.color = color;
     }
-
-    
     
     /**
      * 
      * @return devolvemos el area del circulo
      */
-    public float areaCirculo() {
-        float area = 0;
+    public float calcularArea() {
         
-        return area;
+        return ( float )( Math.PI * Math.pow( radio, 2 ) );
     }
     /**
      * 
      * @return Devolvemos la longitud del circulo
      */
-    public float longitudCirculo() {
-        float longitud = 0;
+    public float calcularLongitud() {
         
-        return longitud;
+        return ( float )( 2 * Math.PI * radio );
     }
     /**
      * Source / Insert code... / Getters and Setters...
@@ -55,7 +58,7 @@ public class Circulo {
      * 
      * @param radio Establecemos el radio del circulo
      */
-    public void setRadio(float radio) {
+    public void setRadio( float radio ) {
         this.radio = radio;
     }
     
@@ -65,13 +68,22 @@ public class Circulo {
      * Si no se marca la casilla se crea sin parametros.
      * @param radiazo 
      */
-    public Circulo(float radiazo) {
+    public Circulo( float radiazo ) {
         this.radio = radiazo;
     }
     /**
-     * 
+     * Creado el constructor sin parametros.
      */
     public Circulo() {
     }
     
+    /**
+     * Refactor / Inline...
+     * Se nos muestra una vista previa de como va a quedar el cambio despues del codigo.
+     * @param circulo1
+     * @return 
+     */
+    static String mostrarRadio( Circulo circulo1 ){
+        return "\n El radio de este círculo es " + circulo1.radio;
+    }
 }
