@@ -17,10 +17,10 @@ import java.io.InputStreamReader;
  * En caso contrario emite mensaje si erronea
  * - Método:devuelve
  * "AULA xx NºEQUIPO=> xx"
- * 
- * Identificación de un ordenador del Instituto:
- * - Formato correcto: "PCXXDD":
- * - XX -> 5, 16, 18, 25, 20, 21. AULA
+ 
+ Identificación de un etiqueta del Instituto:
+ - Formato correcto: "PCXXDD":
+ - XX -> 5, 16, 18, 25, 20, 21. AULA
  * - DD -> 1-30. Nº Alumno
  * 
  * Crear una clase aplicación y probar la implementación de la clase
@@ -37,16 +37,13 @@ public class AplicacionOrdenador {
      */
     public static void main(String[] args) throws IOException {
         
-        int aula, equipo;
+        String etiqueta;
         
-        System.out.println("Introduce el numero de aula:");
-        aula = Integer.parseInt( teclado.readLine() );
-        System.out.println("Introduce el numero de equipo:");
-        equipo = Integer.parseInt( teclado.readLine() );
+        System.out.println("Introduce la etiqueta del ordenador:");
+        etiqueta = teclado.readLine();
         
-        NombreOrdenador equipo1 =  new NombreOrdenador( aula, equipo );
+        NombreOrdenador equipo1 =  new NombreOrdenador( etiqueta );
         
-        System.out.println("\n\nPC" + equipo1.getAula() + equipo1.getEquipo() );
         System.out.println( equipo1.obtenerOrdenador() );
         
         

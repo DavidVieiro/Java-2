@@ -13,10 +13,10 @@ package nombreordenador1;
  * En caso contrario emite mensaje si erronea
  * - Método:devuelve
  * "AULA xx NºEQUIPO=> xx"
- * 
- * Identificación de un ordenador del Instituto:
- * - Formato correcto: "PCXXDD":
- * - XX -> 5, 16, 18, 25, 20, 21. AULA
+ 
+ Identificación de un etiqueta del Instituto:
+ - Formato correcto: "PCXXDD":
+ - XX -> 5, 16, 18, 25, 20, 21. AULA
  * - DD -> 1-30. Nº Alumno
  * 
  * Crear una clase aplicación y probar la implementación de la clase
@@ -25,46 +25,35 @@ package nombreordenador1;
  */
 public class NombreOrdenador {
     
-    int aula;
-    int equipo;
+    String aula;
+    String equipo;
+    String etiqueta;
     
     /**
      * 
-     * @param aula
-     * @param equipo 
+     * @param etiqueta 
      */
-    public NombreOrdenador(int aula, int equipo) {
-        
-        if ( comprobarAula( aula ) ) {
-            if ( comprobarEquipo( equipo ) ) {
-                this.aula = aula;
-                this.equipo = equipo;
+    public NombreOrdenador( String etiqueta ) {
+        if ( comprobarInicio( etiqueta ) ) {
+            
+            if ( comprobarAula( etiqueta ) ) {
+                
+                if ( comprobarEquipo( etiqueta ) ) {
+                    this.etiqueta = etiqueta;
+                }
+                else {
+                    System.out.println("ERROR: El equipo introducido no existe... (01 - 30)");
+                }
             }
             else {
-                System.out.println("ERROR: El numero de equipo es incorrecto...");
+                System.out.println("ERROR: El aula introducida no existe... (05, 16, 18, 25, 20, 21)");
             }
         }
         else {
-            System.out.println("ERROR: El numero de aula es incorrecto...");
+            System.out.println("ERROR: La etiqueta tiene que empezar por 'PC'");
         }
         
         
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    public int getAula() {
-        return aula;
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    public int getEquipo() {
-        return equipo;
     }
     
     /**
@@ -72,23 +61,27 @@ public class NombreOrdenador {
      * @return 
      */
     public String obtenerOrdenador () {
+        if ( aula != null && equipo != null ) {
+            
+            return "AULA " + aula + " Nº EQUIPO => " + equipo;
+        }
+        return "";
         
-        return "AULA " + getAula() + " Nº EQUIPO => " + getEquipo();
     }
     
     /**
      * 
-     * @param aula
+     * @param etiqueta
      * @return 
      */
-    private boolean comprobarAula ( int aula ) {
-        // 5, 16, 18, 25, 20, 21
-        if ( aula == 5
-          || aula == 16
-          || aula == 18
-          || aula == 25
-          || aula == 20
-          || aula == 21 ) {
+    private boolean comprobarInicio ( String etiqueta ) {
+        
+        char c0, c1;
+        
+        c0 = Character.toUpperCase( etiqueta.charAt( 0 ) );
+        c1 = Character.toUpperCase( etiqueta.charAt( 1 ) );
+        
+        if( c0 == 'P' && c1 == 'C' ) {
             return true;
         }
         else {
@@ -99,17 +92,60 @@ public class NombreOrdenador {
     
     /**
      * 
-     * @param equipo
+     * @param etiqueta
      * @return 
      */
-    private boolean comprobarEquipo ( int equipo ) {
+    private boolean comprobarAula ( String etiqueta ) {
         
-        if ( equipo >= 1 && equipo <= 30 ) {
+        this.aula = "" + etiqueta.charAt( 2 ) + etiqueta.charAt( 3 );
+        
+        // 05, 16, 18, 25, 20, 21
+        if ( "05".equals( aula )
+          || "16".equals( aula )
+          || "18".equals( aula )
+          || "25".equals( aula )
+          || "20".equals( aula )
+          || "21".equals( aula ) ) {
             return true;
         }
         else {
             return false;
         }
+        
+    }
+    
+    /**
+     * 
+     * @param etiqueta
+     * @return 
+     */
+    public boolean comprobarEquipo ( String etiqueta ) {
+        
+        this.equipo = "" + etiqueta.charAt( 4 ) + etiqueta.charAt( 5 );
+        
+        int c4, c5;
+        
+        c4 = etiqueta.charAt( 4 );
+        c5 = etiqueta.charAt( 5 );
+        // Comprobamos que el caracter este dentro de su valor en decimal
+        if ( c4 == 48 && c5 == 48) {
+            return false;
+        }
+        else if ( c4 >= 48 && c4 <= 50  ) {
+            if ( c5 >= 48 && c5 <= 57 ) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else if ( c4 == 51 && c5 == 48) {
+            return true;
+        }
+        else {
+            return false;
+        }
+        
     }
     
 }
