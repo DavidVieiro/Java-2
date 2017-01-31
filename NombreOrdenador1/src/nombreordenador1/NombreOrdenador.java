@@ -119,7 +119,7 @@ public class NombreOrdenador {
      * @param etiqueta
      * @return 
      */
-    public boolean comprobarEquipo ( String etiqueta ) {
+    private boolean comprobarEquipo ( String etiqueta ) {
         
         this.equipo = "" + etiqueta.charAt( 4 ) + etiqueta.charAt( 5 );
         
