@@ -9,6 +9,7 @@ package clasesanimales1;
  *
  * @author dam132
  */
+// abstract class Animal {
 class Animal {
     
     private int edad;
@@ -19,7 +20,7 @@ class Animal {
      * Constructores diferentes.
      */
     Animal () {
-        this( 0, "(sin dato)");
+        this( "(sin dato)", 0);
     }
     
     /**
@@ -35,7 +36,7 @@ class Animal {
      * @param edad
      * @param nombre 
      */
-    public Animal( int edad, String nombre ) {
+    public Animal( String nombre, int edad ) {
         this.edad = edad;
         this.nombre = nombre;
     }
@@ -80,5 +81,8 @@ class Animal {
     public void setEdad ( int e ) {
         edad = e;
     }
+    
+    
+    
     
 }

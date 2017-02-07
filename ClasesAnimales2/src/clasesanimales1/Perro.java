@@ -27,7 +27,7 @@ public class Perro extends Animal {
      * @param nombre 
      */
     public Perro( int edad, String nombre ) {
-        super( edad, nombre );
+        super( nombre, edad );
         //this.setEdad( edad );
         //this.setNombre( nombre );
         
@@ -48,5 +48,24 @@ public class Perro extends Animal {
     public String getRaza() {
         return raza;
     }
+    
+    /**
+     * Sobreescribimos la funcion toString.
+     * @return 
+     */
+    @Override
+    public String toString () {
+        
+        return "Perro( ";
+    }
+    
+    // un metodo de clase que recibe como parametro un objeto
+    // y muestra los datos de ese objeto.
+    static void verDatos ( Perro dogo ) {
+        
+        System.out.println("datos: " + dogo.getRaza() );
+        dogo.getNombre();
+    }
+    
     
 }

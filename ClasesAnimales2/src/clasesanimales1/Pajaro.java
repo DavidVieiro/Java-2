@@ -14,6 +14,27 @@ public class Pajaro extends Animal {
     // Se hereda todo menos los constructores.
     int peso;
     String color;
+    private static final String TIPO = "plumas";
+
+    public Pajaro() {
+    }
+
+    public Pajaro( String nombre, int peso, String color, int edad ) {
+        super( nombre, edad );
+        this.peso = peso;
+        this.color = color;
+    }
     
-    
+//    @Override
+//    public String getNombre () {
+//        
+//        return super(nombre);
+//    }
+//    public void verNombre () {
+//        System.out.println("Nombre: " + super( nombre ) );
+//    }
+
+    public static String getTIPO() {
+        return TIPO;
+    }
 }

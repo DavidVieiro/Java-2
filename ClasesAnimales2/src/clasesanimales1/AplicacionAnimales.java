@@ -69,6 +69,15 @@ public class AplicacionAnimales {
         System.out.println("Raza: " + otroperro.getRaza() );
         System.out.print("Edad: ");
         otroperro.getEdad();
+        
+        System.out.println("\n\n------");
+        System.out.println("Obteniendo Perro... " + otroperro.toString());
+        
+        System.out.println("\n\n--- Pajaro ---");
+        Pajaro pio = new Pajaro ();
+        
+        pio.getTIPO();
+        
     }
     
 }
