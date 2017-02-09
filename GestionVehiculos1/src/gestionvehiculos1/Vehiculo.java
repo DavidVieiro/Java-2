@@ -14,45 +14,84 @@ public class Vehiculo {
     private String matricula;
     private int anoCompra;
     private String marca;
-    private static int totalVehiculos;
-    private int ingresos;
+    private static int totalVehiculos; // tiene que ser static
+    private static int ingresos;
+    private static int ingresosTotales;
     
+    /**
+     * 
+     */
     public Vehiculo() {
-        ++totalVehiculos;
     }
     
+    /**
+     * 
+     * @param matricula
+     * @param anoCompra
+     * @param marca 
+     */
     public Vehiculo( String matricula, int anoCompra, String marca ) {
         this.matricula = matricula;
         this.anoCompra = anoCompra;
         this.marca = marca;
         ++totalVehiculos;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public String getMatricula() {
         return matricula;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public int getAnoCompra() {
         return anoCompra;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public String getMarca() {
         return marca;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public int getTotalVehiculos() {
         return totalVehiculos;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public int verIngresos() {
         return ingresos;
     }
     
-    public void calcularIngresoTotal ( Furgoneta furgo, Coche buga ) {
+    /**
+     * 
+     */
+    static public void calcularIngresoTotal() {
         
-        ingresos += furgo.verIngresos();
-        ingresos += buga.verIngresos();
+        ingresosTotales += ingresos;
         
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public int getIngresosTotales() {
+        return ingresosTotales;
     }
     
 }
