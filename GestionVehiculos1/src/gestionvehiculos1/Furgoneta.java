@@ -13,13 +13,6 @@ public class Furgoneta extends Vehiculo {
     
     private int dinero;
     private int vigilantes;
-    private int ingresos;
-    
-    /**
-     * 
-     */
-    public Furgoneta() {
-    }
     
     /**
      * 
@@ -33,7 +26,7 @@ public class Furgoneta extends Vehiculo {
         super(matricula, anoCompra, marca);
         this.dinero = dinero;
         this.vigilantes = vigilantes;
-        calcularIngreso();
+        this.calcularIngreso();
     }
     
     /**
@@ -58,10 +51,10 @@ public class Furgoneta extends Vehiculo {
     public final void calcularIngreso () {
         
         if ( dinero >= 6000 ) {
-            ingresos = 120;
+            this.ingresos = 120;
         }
         else {
-            ingresos = 60;
+            this.ingresos = 60;
         }
         
         super.calcularIngresoTotal();

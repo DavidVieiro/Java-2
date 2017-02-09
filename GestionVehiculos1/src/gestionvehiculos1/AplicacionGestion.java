@@ -56,11 +56,9 @@ public class AplicacionGestion {
         System.out.println("Conductor: " + coche2.getNombreConductor() );
         System.out.println("Ingresos: "  + coche2.getIngresos() );
         
-        System.out.println("\n\n--- Ingresos Totales");
-        Vehiculo masDatos1 = new Vehiculo();
-        System.out.println("Total Vehiculos: " + masDatos1.getTotalVehiculos() );
-        System.out.println("Total Ingresos: "  + masDatos1.getIngresosTotales() );
-        
+        System.out.println("\n\n--- Datos Adicionales ---");
+        System.out.println("Vechiculos Totales: " + Vehiculo.getTotalVehiculos() );
+        System.out.println("Ingresos Totales: "   + Vehiculo.getIngresosTotales() );
         
     }
     

@@ -14,13 +14,6 @@ public class Coche extends Vehiculo {
     private String claveDocumento;
     private String nombreConductor;
     private int importancia;
-    private int ingresos;
-    
-    /**
-     * 
-     */
-    public Coche() {
-    }
     
     /**
      * 
@@ -36,7 +29,7 @@ public class Coche extends Vehiculo {
         this.claveDocumento = claveDocumento;
         this.nombreConductor = nombreConductor;
         this.importancia = importancia;
-        calcularIngreso();
+        this.calcularIngreso();
     }
     
     /**
@@ -58,17 +51,17 @@ public class Coche extends Vehiculo {
     /**
      * 
      */
-    public final void calcularIngreso () {
+    private void calcularIngreso () {
         
         switch ( importancia ) {
             case 0:
-                ingresos = 30;
+                this.ingresos = 30;
                 break;
             case 1:
-                ingresos = 60;
+                this.ingresos = 60;
                 break;
             case 2:
-                ingresos = 120;
+                this.ingresos = 120;
                 break;
             default:
                 System.out.println("ERROR: Ese nivel de importancia es incorrecto.");

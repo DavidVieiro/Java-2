@@ -15,14 +15,8 @@ public class Vehiculo {
     private int anoCompra;
     private String marca;
     private static int totalVehiculos; // tiene que ser static
-    private static int ingresos;
+    protected int ingresos;
     private static int ingresosTotales;
-    
-    /**
-     * 
-     */
-    public Vehiculo() {
-    }
     
     /**
      * 
@@ -65,7 +59,7 @@ public class Vehiculo {
      * 
      * @return 
      */
-    public int getTotalVehiculos() {
+    public static int getTotalVehiculos() {
         return totalVehiculos;
     }
     
@@ -73,16 +67,16 @@ public class Vehiculo {
      * 
      * @return 
      */
-    public int verIngresos() {
+    public int verIngresos() { // getIngresos
         return ingresos;
     }
     
     /**
      * 
      */
-    static public void calcularIngresoTotal() {
+    public void calcularIngresoTotal() {
         
-        ingresosTotales += ingresos;
+        ingresosTotales += this.ingresos;
         
     }
     
@@ -90,7 +84,7 @@ public class Vehiculo {
      * 
      * @return 
      */
-    public int getIngresosTotales() {
+    public static int getIngresosTotales() {
         return ingresosTotales;
     }
     
