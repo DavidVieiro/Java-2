@@ -9,6 +9,7 @@ package pruebalibreria2017;
 import biblioteca.Libros;
 import calculos.CGrados;
 import calculos.Circulo;
+import otros.NombreOrdenador;
 
 /**
  *
@@ -23,11 +24,11 @@ public class PruebaLibreria2017 {
         
         CGrados grado1 = new CGrados();
         
-        
         Circulo circulo1 = new Circulo(5);
         
         Libros libro1 = new Libros("","");
         
+        NombreOrdenador ordenador1 = new NombreOrdenador("PC2019");
     }
     
 }
