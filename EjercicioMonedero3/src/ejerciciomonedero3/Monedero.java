@@ -33,11 +33,11 @@ public class Monedero {
      * @throws ejerciciomonedero3.ErrorSacarDineroException 
      */
     public void sacarDinero ( double dinero_a_sacar ) throws ErrorSacarDineroException {
-        if ( this.cantidad - dinero_a_sacar >= 0 ) {
-            cantidad -= dinero_a_sacar;
+        if ( dinero_a_sacar >= 0 ) {
+            this.cantidad -= dinero_a_sacar;
         }
         else {
-            throw new ErrorSacarDineroException ("\nERROR: El monedero no puede quedar con cantidad negativa...");
+            throw new ErrorSacarDineroException ("\nERROR: No se puede retirar una cantidad de dinero negativa...");
         }
     }
     
@@ -57,7 +57,7 @@ public class Monedero {
      */
     public void ingresarDinero ( double cantidad_a_ingresar ) throws ErrorIngresarDineroException {
         if ( cantidad_a_ingresar > 0 ) {
-            cantidad += cantidad_a_ingresar;
+            this.cantidad += cantidad_a_ingresar;
         }
         else {
             throw new ErrorIngresarDineroException ("\nERROR: No puede ingresar una cantidad igual o menor a 0.");

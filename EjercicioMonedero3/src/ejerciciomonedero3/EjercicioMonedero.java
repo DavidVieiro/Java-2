@@ -56,12 +56,7 @@ public class EjercicioMonedero {
                     case 3:
                         System.out.println("\nIntroduce la cantida de dinero que quieres retirar:");
                         dinero_retirar = Double.valueOf( teclado.readLine() );
-                        if ( dinero_retirar >= 0 ) {
-                            dinero1.sacarDinero( dinero_retirar );
-                        }
-                        else {
-                            System.out.println("ERROR: Introduce un valor positivo.");
-                        }
+                        dinero1.sacarDinero( dinero_retirar );
                         break;
                     case 4:
                         System.out.println("\n\nSaliendo del programa...\n");

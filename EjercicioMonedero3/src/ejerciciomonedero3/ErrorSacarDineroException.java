@@ -15,4 +15,5 @@ public class ErrorSacarDineroException extends Exception {
         
         super ( msg );
     }
+    
 }
