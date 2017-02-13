@@ -27,18 +27,22 @@ public class EjercicioMonedero {
         
         boolean continuar = true;
         byte menu;
-        double dinero = 0, dinero_ingresar, dinero_retirar;
+        double dinero, dinero_ingresar, dinero_retirar;
         
-        Monedero dinero1 =  new Monedero ( dinero );
-        
-        do {
-            try {
+        try {
+            
+            System.out.println("Introduce una cantidad de dinero para crear tu monedero:");
+            dinero = Double.valueOf( teclado.readLine() );
+            
+            Monedero dinero1 =  new Monedero ( dinero );
+                
+            do {
                 System.out.println("\n1 - Ingresar dinero");
                 System.out.println("2 - Consultar saldo");
                 System.out.println("3 - Sacar dinero");
                 System.out.println("4 - Salir");
                 menu = Byte.parseByte( teclado.readLine() );
-                
+
                 switch ( menu ) {
                     case 1:
                         System.out.println("\nIntroduce la cantidad que quieres ingresar:");
@@ -62,21 +66,20 @@ public class EjercicioMonedero {
                     case 4:
                         System.out.println("\n\nSaliendo del programa...\n");
                         continuar =  false;
-                        
+
                         break;
                     default:
                         System.out.println("\nERROR: Introduce una opcion de menu valida...");
                 }
-            } catch ( ErrorSacarDineroException | ErrorIngresarDineroException error1 ) {
-                
-                System.out.println( error1.getMessage() );
-                
-            }
-            catch ( NumberFormatException | IOException ex1) {
-                System.out.println("ERROR: " + ex1);
-            }
-        } while ( continuar == true);
-        
+
+            } while ( continuar == true);
+        } catch ( ErrorSacarDineroException | ErrorIngresarDineroException | ErrorCrearMonederoException error1 ) {
+            System.out.println( error1.getMessage() );
+
+        }
+        catch ( NumberFormatException | IOException ex1) {
+            System.out.println("ERROR: " + ex1);
+        }
         
     }
     
