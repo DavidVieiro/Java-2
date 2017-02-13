@@ -29,6 +29,8 @@ public class PruebaLibreria2017 {
         Libros libro1 = new Libros("","");
         
         NombreOrdenador ordenador1 = new NombreOrdenador("PC2019");
+        
+        System.out.println( ordenador1.obtenerOrdenador() );
     }
     
 }

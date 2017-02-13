@@ -4,23 +4,21 @@
  * and open the template in the editor.
  */
 package otros;
-
+// Crear la clase NombreOrdenador
+// atributo: etiqueta
+// Constructor: argumento es la cadena nombre o identificación
+// => si correcta según formato asigna dato o atributo
+// En caso contrario emite mensaje si erronea
+// - Método:devuelve
+// "AULA xx NºEQUIPO=> xx"
+// 
+// Identificación de un etiqueta del Instituto:
+// - Formato correcto: "PCXXDD":
+// - XX -> 5, 16, 18, 25, 20, 21. AULA
+// - DD -> 1-30. Nº Alumno
+// 
+// Crear una clase aplicación y probar la implementación de la clase
 /**
- * Crear la clase NombreOrdenador
- * atributo: etiqueta
- * Constructor: argumento es la cadena nombre o identificación
- * => si correcta según formato asigna dato o atributo
- * En caso contrario emite mensaje si erronea
- * - Método:devuelve
- * "AULA xx NºEQUIPO=> xx"
- 
- Identificación de un etiqueta del Instituto:
- - Formato correcto: "PCXXDD":
- - XX -> 5, 16, 18, 25, 20, 21. AULA
- * - DD -> 1-30. Nº Alumno
- * 
- * Crear una clase aplicación y probar la implementación de la clase
- * 
  * @author dam132
  */
 public class NombreOrdenador {
