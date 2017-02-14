@@ -8,6 +8,8 @@ package ejerciciomonedero3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,21 +24,33 @@ public class EjercicioMonedero {
      * @throws ejerciciomonedero3.ErrorSacarDineroException
      * @throws ejerciciomonedero3.ErrorCrearMonederoException
      * @throws ejerciciomonedero3.ErrorIngresarDineroException
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) throws ErrorSacarDineroException, ErrorCrearMonederoException, ErrorIngresarDineroException {
+    public static void main(String[] args) throws ErrorSacarDineroException, ErrorCrearMonederoException, ErrorIngresarDineroException, IOException {
         
         boolean continuar = true;
-        byte menu;
+        byte menu = 0;
         double dinero, dinero_ingresar, dinero_retirar;
         
-        try {
-            
-            System.out.println("Introduce una cantidad de dinero para crear tu monedero:");
-            dinero = Double.valueOf( teclado.readLine() );
-            
-            Monedero dinero1 =  new Monedero ( dinero );
+//        do {
+//            try {
                 
-            do {
+                System.out.println("Introduce una cantidad de dinero para crear tu monedero:");
+                dinero = Double.valueOf( teclado.readLine() );
+                // Constructor
+                Monedero dinero1 =  new Monedero ( dinero );
+//
+//            }
+//            catch ( ErrorCrearMonederoException error1 ) {
+//                System.out.println( error1.getMessage() );
+//            }
+//            catch ( NumberFormatException | IOException ex1) {
+//                System.out.println("ERROR: " + ex1);
+//            }
+//        } while ( dinero >= 0);
+        
+        do {
+            try {
                 System.out.println("\n1 - Ingresar dinero");
                 System.out.println("2 - Consultar saldo");
                 System.out.println("3 - Sacar dinero");
@@ -60,21 +74,19 @@ public class EjercicioMonedero {
                         break;
                     case 4:
                         System.out.println("\n\nSaliendo del programa...\n");
-                        continuar =  false;
-
                         break;
                     default:
                         System.out.println("\nERROR: Introduce una opcion de menu valida...");
                 }
-
-            } while ( continuar == true);
-        } catch ( ErrorSacarDineroException | ErrorIngresarDineroException | ErrorCrearMonederoException error1 ) {
-            System.out.println( error1.getMessage() );
-
-        }
-        catch ( NumberFormatException | IOException ex1) {
-            System.out.println("ERROR: " + ex1);
-        }
+            }
+            catch ( ErrorSacarDineroException | ErrorIngresarDineroException error1 ) {
+                System.out.println( error1.getMessage() );
+            }
+            catch ( NumberFormatException | IOException ex1) {
+                System.out.println("ERROR: " + ex1);
+            }
+        } while ( menu != 4 );
+            
         
     }
     

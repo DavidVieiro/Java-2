@@ -16,4 +16,13 @@ public class ErrorCrearMonederoException extends Exception {
         super ( msg );
     }
     
+//    public ErrorCrearMonederoException () {
+//    }
+//    
+//    @Override
+//    public String getMessage() {
+//
+//        return "\nERROR: No se puede abrir un monedero con cantidad negativa...";
+//    }
+    
 }
