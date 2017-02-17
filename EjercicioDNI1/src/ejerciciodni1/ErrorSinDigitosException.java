@@ -17,6 +17,6 @@ public class ErrorSinDigitosException extends Exception {
     @Override
     public String getMessage() {
 
-        return "\nERROR: El DNI no empieza por digitos...";
+        return "\nERROR: El DNI no empieza por digitos o contiene todo ceros...";
     }
 }

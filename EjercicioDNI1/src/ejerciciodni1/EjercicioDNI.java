@@ -24,13 +24,13 @@ public class EjercicioDNI {
         
         String dni;
         try {
-            System.out.println("Introduce un DNI: ");
+            System.out.println("--- Introduce un DNI:---");
             System.out.println("|| Recuerda que son 8 numeros y 1 letra al final ||");
             dni = teclado.readLine();
         
             DNI nuevo1 = new DNI( dni );
             
-            System.out.println("DNI: " + nuevo1.getDni() );
+            System.out.println("\nDNI: " + nuevo1.getDni() );
         }
         catch ( ErrorLetraIncorrectaException | ErrorSinDigitosException | ErrorLongitudException error1 ) {
             System.out.println( error1.getMessage() );

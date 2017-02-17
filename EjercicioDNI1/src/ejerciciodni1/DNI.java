@@ -68,14 +68,20 @@ public class DNI {
         
         this.dni = dni;
         int comprobarDigito = 0;
+        int comprobarCeros = 0;
         
         for ( int j = 0; j < dni.length(); ++j ) {
             if ( Character.isDigit( dni.charAt( j ) ) ) {
+                
                 ++comprobarDigito;
+                // El cero representado en entero es el 48 segun la tabla ASCII
+                if ( dni.charAt( j ) == 48  ) {
+                    ++comprobarCeros;
+                }
             }
         }
         
-        if ( comprobarDigito == 8 ) {
+        if ( comprobarDigito == 8 && comprobarCeros < 8 ) {
             return true;
         }
         else {
