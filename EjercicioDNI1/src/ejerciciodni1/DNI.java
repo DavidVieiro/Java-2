@@ -19,11 +19,11 @@ public class DNI {
     private final String LETRAS = "TRWAGMYFPDXBNJZSQVHLCKE";
     
     /**
-     * 
-     * @param dni
-     * @throws ErrorLetraIncorrectaException
-     * @throws ErrorSinDigitosException
-     * @throws ErrorLongitudException 
+     * Creamos el DNI haciendo las comprobaciones pertinentes primero.
+     * @param dni Variable del DNI.
+     * @throws ErrorLetraIncorrectaException Comprueba si la letra es correcta.
+     * @throws ErrorSinDigitosException Comprueba si hay digitos en el DNI.
+     * @throws ErrorLongitudException Comprueba que el DNI tenga una longitud correcta.
      */
     public DNI( String dni ) throws ErrorLetraIncorrectaException, ErrorSinDigitosException, ErrorLongitudException {
         
@@ -46,27 +46,22 @@ public class DNI {
     }
     
     /**
-     * Comprobamos si la longitud del DNI es de 8 o 9.
-     * @param dni
-     * @return 
+     * Comprobamos si la longitud del DNI es de 9.
+     * @param dni Variable del DNI.
+     * @return Devuelve si la longitud es correcta o incorrecta
      */
     private boolean controlTamano( String dni ) {
         
         this.dni = dni;
         
-        if ( dni.length() == 9 ) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return dni.length() == 9;
         
     }
     
     /**
-     * 
-     * @param dni
-     * @return 
+     * Comprueba que los primeros 8 caracteres sean numeros. Tambien comprobamos que no sean todo ceros.
+     * @param dni Variable del DNI.
+     * @return Devuelve si son todo numeros y no son todo ceros.
      */
     private boolean todoDigitos( String dni ) {
         
@@ -85,18 +80,13 @@ public class DNI {
             }
         }
         
-        if ( comprobarDigito == 8 && comprobarCeros < 8 ) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return comprobarDigito == 8 && comprobarCeros < 8;
     }
     
     /**
-     * 
-     * @param dni
-     * @return 
+     * Comprueba que la letra del DNI sea correcta.
+     * @param dni Variable del DNI.
+     * @return Devuelve si contiene una letra correcta.
      */
     private boolean letraCorrecta( String dni ) {
         
@@ -113,8 +103,8 @@ public class DNI {
     }
     
     /**
-     * 
-     * @return 
+     * Obtenemos el DNI almacenado en la variable.
+     * @return Variable del DNI.
      */
     public String getDni() {
         return dni;
