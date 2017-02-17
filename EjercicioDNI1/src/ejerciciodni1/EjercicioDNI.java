@@ -19,17 +19,26 @@ public class EjercicioDNI {
     
     /**
      * @param args the command line arguments
-     * @throws java.io.IOException
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         
         String dni;
+        try {
+            System.out.println("Introduce un DNI: ");
+            System.out.println("|| Recuerda que son 8 numeros y 1 letra al final ||");
+            dni = teclado.readLine();
         
-        System.out.println("Introduce un DNI: ");
-        System.out.println("|| Recuerda que son 8 numeros y 1 letra al final ||");
-        dni = teclado.readLine();
+            DNI nuevo1 = new DNI( dni );
+            
+            System.out.println("DNI: " + nuevo1.getDni() );
+        }
+        catch ( ErrorLetraIncorrectaException | ErrorSinDigitosException | ErrorLongitudException error1 ) {
+            System.out.println( error1.getMessage() );
+        }
+        catch ( IOException error2 ) {
+            System.out.println("ERROR: " + error2);
+        }
         
-        DNI nuevo1 = new DNI( dni );
         
     }
     

@@ -14,28 +14,30 @@ public class DNI {
     private String dni;
     private final String LETRAS = "TRWAGMYFPDXBNJZSQVHLCKE";
     
-    public String getDni() {
-        return dni;
-    }
-    
-    public DNI( String dni ) {
+    /**
+     * 
+     * @param dni
+     * @throws ErrorLetraIncorrectaException
+     * @throws ErrorSinDigitosException
+     * @throws ErrorLongitudException 
+     */
+    public DNI( String dni ) throws ErrorLetraIncorrectaException, ErrorSinDigitosException, ErrorLongitudException {
         
         if ( controlTamano( dni ) ) {
             if ( todoDigitos( dni ) ) {
                 if ( letraCorrecta ( dni ) ) {
                     this.dni = dni;
-                    System.out.println("TODO CORRECTO");
                 }
                 else {
-                    System.out.println("\nERROR: La letra no es correcta...");
+                    throw new ErrorLetraIncorrectaException ();
                 }
             }
             else {
-                System.out.println("\nERROR: El DNI no empieza por digitos...");
+                throw new ErrorSinDigitosException ();
             }
         }
         else {
-            System.out.println("\nERROR: EL tamaño del DNI no es el correcto...");
+            throw new ErrorLongitudException ();
         }
     }
     
@@ -57,6 +59,11 @@ public class DNI {
         
     }
     
+    /**
+     * 
+     * @param dni
+     * @return 
+     */
     private boolean todoDigitos( String dni ) {
         
         this.dni = dni;
@@ -76,6 +83,11 @@ public class DNI {
         }
     }
     
+    /**
+     * 
+     * @param dni
+     * @return 
+     */
     private boolean letraCorrecta( String dni ) {
         
         this.dni = dni;
@@ -93,6 +105,14 @@ public class DNI {
         else {
             return false;
         }
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public String getDni() {
+        return dni;
     }
     
 }
