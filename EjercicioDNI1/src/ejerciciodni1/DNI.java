@@ -5,6 +5,10 @@
  */
 package ejerciciodni1;
 
+import excepciones.ErrorSinDigitosException;
+import excepciones.ErrorLongitudException;
+import excepciones.ErrorLetraIncorrectaException;
+
 /**
  *
  * @author dam132
@@ -105,12 +109,7 @@ public class DNI {
             }
         }
         
-        if ( comprobarLetra == 1 ) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return comprobarLetra == 1;
     }
     
     /**

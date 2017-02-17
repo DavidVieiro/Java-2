@@ -5,6 +5,9 @@
  */
 package ejerciciodni1;
 
+import excepciones.ErrorSinDigitosException;
+import excepciones.ErrorLongitudException;
+import excepciones.ErrorLetraIncorrectaException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
