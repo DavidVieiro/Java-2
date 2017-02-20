@@ -33,6 +33,7 @@ public class EjercicioHerencias {
         Amiga amiga = new Amiga();
         
         amiga.datoAmiga = "un dato por defecto";
+        amiga.Calculos();
         
         OtraHija otraHija = new OtraHija();
         

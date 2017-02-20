@@ -24,6 +24,9 @@ public class Amiga {
         madre.datoPaquete   = "soy amiga datoPaquete";
         madre.datoProtected = "soy amiga datoProtected";
         
+        System.out.println("Accedo a dato protegido --> " + madre.datoProtected);
+        System.out.println("Accedo a dato paquete --> "   + madre.datoPaquete);
+        
     }
     
 }
