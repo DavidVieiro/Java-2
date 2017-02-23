@@ -67,5 +67,21 @@ public class Perro extends Animal {
         dogo.getNombre();
     }
     
-    
+    // Comparar perro
+    @Override
+    public boolean equals( Object obj ) {
+        
+        if ( obj == null ) {
+            return false;
+        }
+        if ( this.getClass() != obj.getClass() ) {
+            return false;
+        }
+        
+        // convertimos
+        final Perro otro = ( Perro ) obj;
+        
+        //true / false
+        return otro.getRaza().equalsIgnoreCase( this.raza );
+    }
 }
