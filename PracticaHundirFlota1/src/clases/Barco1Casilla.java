@@ -15,21 +15,35 @@ public class Barco1Casilla extends Barcos {
     
     // numero de casillas que ocupa el barco
     private final byte TIPO = 1;
+    @SuppressWarnings("FieldMayBeFinal")
     private int coordX;
+    @SuppressWarnings("FieldMayBeFinal")
     private int coordY;
     private final int MIN = 0;
     private final int MAX = 9;
+    int totalBarcos = 0;
     
     /**
-     * 
+     * Creamos un barco que ocupa 1 casilla en el tablero.
      */
     public Barco1Casilla() {
-        this.coordX = randomCoord( MIN, MAX );
-        this.coordY = randomCoord( MIN, MAX );
+        
+        do {
+            
+            this.coordX = randomCoord( MIN, MAX );
+            this.coordY = randomCoord( MIN, MAX );
+            
+            tablero[ this.coordX ][ this.coordY ] = "B";
+            ++totalBarcos;
+            System.out.println("\n" + introducirBarco( this.coordX, this.coordY ));
+            
+        } while ( introducirBarco( this.coordX, this.coordY ) == false && totalBarcos == 5 );
+        
+        
     }
     
     /**
-     * Obtiene el tipo de barco. AKA numero de casillas que ocupa.
+     * Obtiene el tipo de barco. Numero de casillas que ocupa.
      * @return 
      */
     public byte getTipo() {
@@ -60,16 +74,36 @@ public class Barco1Casilla extends Barcos {
      */
     public static int randomCoord( int min, int max ) {
 
-        Random num1 = new Random();
+        Random numero = new Random();
         
         int randomNum;
-        randomNum = num1.nextInt( ( max - min ) + 1 ) + min;
+        randomNum = numero.nextInt( ( max - min ) + 1 ) + min;
 
         return randomNum;
     }
     
-    
-    
-    
+    /**
+     * Comprobamos que el barco que se crea no exista ya en el tablero.
+     * @param coordX Coordenada X.
+     * @param coordY Coordenada Y.
+     * @return 
+     */
+    private boolean introducirBarco( int coordX, int coordY) {
+        
+        boolean continuar = false;
+        
+        for ( int i = 0; i < tablero.length; i++ ){
+            for ( int j = 0; j < tablero.length; j++ ) {
+                if( tablero [i][j] == null ) {
+                    continuar = false;
+                }
+                else {
+                    continuar = true;
+                }
+            }
+
+        }
+        return continuar;
+    }
     
 }
