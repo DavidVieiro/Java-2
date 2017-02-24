@@ -21,23 +21,26 @@ public class Barco1Casilla extends Barcos {
     private int coordY;
     private final int MIN = 0;
     private final int MAX = 9;
-    int totalBarcos = 0;
+    private boolean seguir;
     
     /**
      * Creamos un barco que ocupa 1 casilla en el tablero.
      */
     public Barco1Casilla() {
-        
-        do {
-            
+//        do {
             this.coordX = randomCoord( MIN, MAX );
             this.coordY = randomCoord( MIN, MAX );
             
-            tablero[ this.coordX ][ this.coordY ] = "B";
-            ++totalBarcos;
-            System.out.println("\n" + introducirBarco( this.coordX, this.coordY ));
-            
-        } while ( introducirBarco( this.coordX, this.coordY ) == false && totalBarcos == 5 );
+//            if ( !"".equals( tablero[ this.coordX ][ this.coordY ] ) ) {
+                tablero[ this.coordX ][ this.coordY ] = "B";
+//                seguir = true;
+//                
+//            }
+//            else {
+//                seguir = false;
+//            }
+//
+//        } while ( seguir == false );
         
         
     }
@@ -86,24 +89,11 @@ public class Barco1Casilla extends Barcos {
      * Comprobamos que el barco que se crea no exista ya en el tablero.
      * @param coordX Coordenada X.
      * @param coordY Coordenada Y.
-     * @return 
+     * @return Verdadero si el barco no existe en esa posicion.
      */
-    private boolean introducirBarco( int coordX, int coordY) {
+    private boolean crearBarco( int coordX, int coordY) {
         
-        boolean continuar = false;
-        
-        for ( int i = 0; i < tablero.length; i++ ){
-            for ( int j = 0; j < tablero.length; j++ ) {
-                if( tablero [i][j] == null ) {
-                    continuar = false;
-                }
-                else {
-                    continuar = true;
-                }
-            }
-
-        }
-        return continuar;
+        return "B".equals(tablero [ coordX ][ coordY ]);
     }
     
 }
