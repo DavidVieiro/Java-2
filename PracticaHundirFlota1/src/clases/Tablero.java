@@ -41,7 +41,7 @@ public class Tablero {
         // mostramos una O si se ha disparado en una posicion y se ha acertado.
         System.out.println("    -----------------------------------------");
         System.out.println("    | A | B | C | D | E | F | G | H | I | J |");
-        System.out.println("--------------------------------------------");
+        System.out.println("---------------------------------------------");
             
         for ( int i = 0; i < Barcos.tablero.length; ++i ) {
             System.out.print("| " + i + " ");
@@ -62,7 +62,7 @@ public class Tablero {
                     System.out.print("|   ");
                 }
             }
-            System.out.println("|\n--------------------------------------------");
+            System.out.println("|\n---------------------------------------------");
         }
         
     }
