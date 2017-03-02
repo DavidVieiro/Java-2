@@ -5,8 +5,7 @@
  */
 package aplicacion;
 
-import clases.Barco1Casilla;
-import clases.Barcos;
+import clases.Tablero;
 import java.io.IOException;
 
 /**
@@ -21,25 +20,21 @@ public class HundirFlota {
      */
     public static void main(String[] args) throws IOException {
         
-        // Creamos los 5 barcos
-        Barco1Casilla barco1 = new Barco1Casilla();
-        Barco1Casilla barco2 = new Barco1Casilla();
-        Barco1Casilla barco3 = new Barco1Casilla();
-        Barco1Casilla barco4 = new Barco1Casilla();
-        Barco1Casilla barco5 = new Barco1Casilla();
+        // Creamos el tablero con los barcos
+        Tablero partida1 = new Tablero();
         
-        System.out.println("\nSe han creado " + Barcos.barcosRestantes() + " barcos." );
+        System.out.println("\nSe han creado " + Tablero.barcosRestantes() + " barcos." );
         
         do {
             System.out.println("\n\n");
-            Barcos.dibujarTablero ();
+            Tablero.dibujarTablero ();
 
-            Barcos.dispararCannon();
+            Tablero.dispararCannon();
             
-            System.out.println("\nBarcos restantes: " + Barcos.barcosRestantes() );
-        } while ( Barcos.barcosRestantes() != 0 );
+            System.out.println("\nBarcos restantes: " + Tablero.barcosRestantes() );
+        } while ( Tablero.barcosRestantes() != 0 );
         
-        if ( Barcos.barcosRestantes() == 0 ) {
+        if ( Tablero.barcosRestantes() == 0 ) {
             System.out.println("\nENHORABUENA HAS DESTRUIDO TODOS LOS BARCOS DEL ENEMIGO!!!");
         }
     }

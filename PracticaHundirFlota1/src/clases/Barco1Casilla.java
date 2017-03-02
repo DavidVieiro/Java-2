@@ -32,13 +32,8 @@ public class Barco1Casilla extends Barcos {
             this.coordX = randomCoord( MIN, MAX );
             this.coordY = randomCoord( MIN, MAX );
             
-            if ( !crearBarco( this.coordX, this.coordY ) ) {
-                System.out.println("no");
-                
-            }
-            else {
+            if ( crearBarco( this.coordX, this.coordY ) ) {
                 tablero[ this.coordX ][ this.coordY ] = "B";
-                System.out.println("si");
                 ++barcosCreados;
             }
 
