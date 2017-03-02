@@ -5,14 +5,17 @@
  */
 package clases;
 
-import static clases.Barcos.teclado;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  *
  * @author dam132
  */
 public class Tablero {
+    
+    static BufferedReader teclado = new BufferedReader( new InputStreamReader( System.in ) );
     
     /**
      * Creamos los barcos en el tablero.

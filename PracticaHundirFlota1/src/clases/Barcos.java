@@ -5,9 +5,6 @@
  */
 package clases;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 /**
  *
  * @author dam132
@@ -18,8 +15,6 @@ public abstract class Barcos {
     @SuppressWarnings("FieldMayBeFinal")
     private boolean estado;
     static String[][] tablero = new String[10][10];
-    static BufferedReader teclado = new BufferedReader( new InputStreamReader( System.in ) );
-    
     
     /**
      * Creamos un barco con los parametros comunes a todos los barcos.
