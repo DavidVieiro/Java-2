@@ -61,11 +61,11 @@ public abstract class Barcos {
         for ( int i = 0; i < Barcos.tablero.length; ++i ) {
             System.out.print("| " + i + " ");
             for ( int j = 0; j < Barcos.tablero.length; ++j ) {
-                if ( "".equals( Barcos.tablero[i][j] ) ) {
+                if ( "".equals( Barcos.tablero[i][j]  ) ) {
                     System.out.print("|   ");
                 }
                 else if ( "B".equals( Barcos.tablero[i][j] ) ) {
-                    System.out.print("| B ");
+                    System.out.print("|   ");
                 }
                 else if ( "X".equals( Barcos.tablero[i][j] ) ) {
                     System.out.print("| X ");
@@ -88,15 +88,18 @@ public abstract class Barcos {
      */
     public static void dispararCannon() throws IOException {
         
+        String disparoOrdenado;
+        
         System.out.println("\nElige las coordenadas donde crees que hay un barco:");
         String disparo = teclado.readLine();
         
         if (comprobarDisparo( disparo ) ) {
-            System.out.println("Disparo correcto. continua");
-            ordenarCoordenadas( disparo );
+//            System.out.println("Disparo correcto. continua");
+            disparoOrdenado = ordenarCoordenadas( disparo );
+            realizarDisparo( disparoOrdenado );
         }
         else {
-            System.out.println("Coordenadas INCORRECTAS");
+            System.out.println("\nERROR: Coordenadas INCORRECTAS. Prueba otra vez.");
         }
         
     }
@@ -109,24 +112,26 @@ public abstract class Barcos {
     private static boolean comprobarDisparo( String disparo ) {
         
         int comprobar = 0;
-        
-        // comprobamos primer caracter.
-        if ( Character.isDigit( disparo.charAt( 0 ) ) ) {
-            // si el primer caracter es numero el segundo deberia de ser letra.
-            if ( Character.toUpperCase( disparo.charAt( 1 ) ) >= 65
-               && Character.toUpperCase( disparo.charAt( 1 ) ) <= 74 ) {
+        // Comprobamos que la longitud del String es 2
+        if ( disparo.length() == 2) {
+            // Comprobamos primer caracter.
+            if ( Character.isDigit( disparo.charAt( 0 ) ) ) {
+                // Si el primer caracter es numero el segundo deberia de ser letra.
+                if ( Character.toUpperCase( disparo.charAt( 1 ) ) >= 65
+                   && Character.toUpperCase( disparo.charAt( 1 ) ) <= 74 ) {
+                    ++comprobar;
+                }
                 ++comprobar;
             }
-            ++comprobar;
-        }
-        // 65 = A | 74 = J
-        else if ( Character.toUpperCase( disparo.charAt( 0 ) ) >= 65
-               && Character.toUpperCase( disparo.charAt( 0 ) ) <= 74 ) {
-            // si el primer caracter es letra el segundo deberia de ser un numero.
-            if ( Character.isDigit( disparo.charAt( 1 ) ) ) {
+            // 65 = A | 74 = J
+            else if ( Character.toUpperCase( disparo.charAt( 0 ) ) >= 65
+                   && Character.toUpperCase( disparo.charAt( 0 ) ) <= 74 ) {
+                // Si el primer caracter es letra el segundo deberia de ser un numero.
+                if ( Character.isDigit( disparo.charAt( 1 ) ) ) {
+                    ++comprobar;
+                }
                 ++comprobar;
             }
-            ++comprobar;
         }
         
         return comprobar == 2;
@@ -142,20 +147,20 @@ public abstract class Barcos {
         String disparoY = "";
         
         if ( Character.isDigit( disparo.charAt( 0 ) ) ) {
-            
+            // 65 = A | 74 = J
             if ( Character.toUpperCase( disparo.charAt( 1 ) ) >= 65
-               && Character.toUpperCase( disparo.charAt( 1 ) ) <= 74 ) {
-                disparoX = "" + disparo.charAt( 1 );
+              && Character.toUpperCase( disparo.charAt( 1 ) ) <= 74 ) {
+                disparoY = "" + Character.toUpperCase( disparo.charAt( 1 ) );
             }
-            disparoX = "" + disparo.charAt( 0 );
+            disparoX = "" + Character.toUpperCase( disparo.charAt( 0 ) );
         }
         // 65 = A | 74 = J
         else if ( Character.toUpperCase( disparo.charAt( 0 ) ) >= 65
                && Character.toUpperCase( disparo.charAt( 0 ) ) <= 74 ) {
             if ( Character.isDigit( disparo.charAt( 1 ) ) ) {
-                disparoX = "" + disparo.charAt( 0 );
+                disparoY = "" + Character.toUpperCase( disparo.charAt( 0 ) );
             }
-            disparoX = "" + disparo.charAt( 1 );
+            disparoX = "" + Character.toUpperCase( disparo.charAt( 1 ) );
         }
         
         return disparoX + disparoY;
@@ -165,16 +170,31 @@ public abstract class Barcos {
      * Comprobamos el tablero y guardamos el valor correspondiente del disparo.
      * X = falla, O = acierto. Enviamos un mensaje correspondiente al jugador.
      */
-    private void realizarDisparo() {
+    private static void realizarDisparo( String disparoOrdenado ) {
         
+        // Le restamos 48 que es el valor de 0 en ASCII
+        int disparoX = disparoOrdenado.charAt( 0 ) - 48;
+        // Le restamos 65 que es el valor de A en ASCII
+        int disparoY = disparoOrdenado.charAt( 1 ) - 65;
         
+        if ( tablero[ disparoX ][ disparoY ] == null ) {
+            tablero[ disparoX ][ disparoY ] = "X";
+            System.out.println("\nHas fallado, mas suerte en el proximo disparo...");
+        }
+        else if ( "X".equals(tablero[ disparoX ][ disparoY ]) ) {
+            System.out.println("\nYa has disparado en esa posicion, elige otra.");
+        }
+        else {
+            tablero[ disparoX ][ disparoY ] = "O";
+            System.out.println("\nHas acertado!! Acaba con ellos!!");
+        }
         
         
     }
     
     /**
      * Comprobamos el numero de barcos que quedan en juego.
-     * @return 
+     * @return Numero de barcos restantes.
      */
     public static int barcosRestantes() {
         

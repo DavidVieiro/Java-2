@@ -21,26 +21,28 @@ public class Barco1Casilla extends Barcos {
     private int coordY;
     private final int MIN = 0;
     private final int MAX = 9;
-    private boolean seguir;
+    private int barcosCreados = 0;
     
     /**
      * Creamos un barco que ocupa 1 casilla en el tablero.
      */
     public Barco1Casilla() {
-//        do {
+        do {
+            
             this.coordX = randomCoord( MIN, MAX );
             this.coordY = randomCoord( MIN, MAX );
             
-//            if ( !"".equals( tablero[ this.coordX ][ this.coordY ] ) ) {
+            if ( !crearBarco( this.coordX, this.coordY ) ) {
+                System.out.println("no");
+                
+            }
+            else {
                 tablero[ this.coordX ][ this.coordY ] = "B";
-//                seguir = true;
-//                
-//            }
-//            else {
-//                seguir = false;
-//            }
-//
-//        } while ( seguir == false );
+                System.out.println("si");
+                ++barcosCreados;
+            }
+
+        } while ( barcosCreados == 0 );
         
         
     }
@@ -93,7 +95,7 @@ public class Barco1Casilla extends Barcos {
      */
     private boolean crearBarco( int coordX, int coordY) {
         
-        return "B".equals(tablero [ coordX ][ coordY ]);
+        return tablero [ coordX ][ coordY ] == null;
     }
     
 }
