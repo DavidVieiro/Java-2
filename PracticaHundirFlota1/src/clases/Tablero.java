@@ -51,8 +51,8 @@ public class Tablero {
                     System.out.print("|   ");
                 }
                 else if ( tablero[i][j] == 1 ) {
-                    //System.out.print("|   ");
-                    System.out.print("| " + tablero[i][j] + " " );
+                    System.out.print("|   ");
+                    //System.out.print("| " + tablero[i][j] + " " );
                 }
                 else if ( tablero[i][j] == -2 ) {
                     System.out.print("| X ");

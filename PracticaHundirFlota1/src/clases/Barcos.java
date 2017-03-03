@@ -15,7 +15,6 @@ public abstract class Barcos {
     @SuppressWarnings("FieldMayBeFinal")
     private boolean estado;
     
-    
     /**
      * Creamos un barco con los parametros comunes a todos los barcos.
      */

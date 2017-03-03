@@ -39,7 +39,6 @@ public class Barco1Casilla extends Barcos {
 
         } while ( barcosCreados == 0 );
         
-        
     }
     
     /**
@@ -88,7 +87,7 @@ public class Barco1Casilla extends Barcos {
      * @param coordY Coordenada Y.
      * @return Verdadero si el barco no existe en esa posicion.
      */
-    private boolean crearBarco( int coordX, int coordY) {
+    private boolean crearBarco( int coordX, int coordY ) {
         
         return Tablero.tablero [ coordX ][ coordY ] == 0;
     }
