@@ -14,7 +14,7 @@ public abstract class Barcos {
     // true = hundido / false = no hundido
     @SuppressWarnings("FieldMayBeFinal")
     private boolean estado;
-    static String[][] tablero = new String[10][10];
+    
     
     /**
      * Creamos un barco con los parametros comunes a todos los barcos.

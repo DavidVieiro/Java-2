@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 public class Tablero {
     
     static BufferedReader teclado = new BufferedReader( new InputStreamReader( System.in ) );
+    static int[][] tablero = new int[10][10];
     
     /**
      * Creamos los barcos en el tablero.
@@ -31,31 +32,32 @@ public class Tablero {
     
     /**
      * Dibujamos el tablero donde se esconderan los barcos.
+     * Mostramos una X si se ha disparado en una posicion pero se ha fallado.
+     * Mostramos una O si se ha disparado en una posicion y se ha acertado.
+     * No mostramos nada si no se ha disparado en esa posicion.
      */
     @SuppressWarnings("ConvertToStringSwitch")
     public static void dibujarTablero () {
 
-        // Dibujamos el tablero 
-        // No mostramos nada si no se ha disparado en esa posicion
-        // Mostramos una X si se ha disparado en una posicion pero se ha fallado
-        // mostramos una O si se ha disparado en una posicion y se ha acertado.
+        // Dibujamos el tablero
         System.out.println("    -----------------------------------------");
         System.out.println("    | A | B | C | D | E | F | G | H | I | J |");
         System.out.println("---------------------------------------------");
             
-        for ( int i = 0; i < Barcos.tablero.length; ++i ) {
+        for ( int i = 0; i < tablero.length; ++i ) {
             System.out.print("| " + i + " ");
-            for ( int j = 0; j < Barcos.tablero.length; ++j ) {
-                if ( "".equals( Barcos.tablero[i][j]  ) ) {
+            for ( int j = 0; j < tablero.length; ++j ) {
+                if ( tablero[i][j] == 0 ) {
                     System.out.print("|   ");
                 }
-                else if ( "B".equals( Barcos.tablero[i][j] ) ) {
-                    System.out.print("|   ");
+                else if ( tablero[i][j] == 1 ) {
+                    //System.out.print("|   ");
+                    System.out.print("| " + tablero[i][j] + " " );
                 }
-                else if ( "X".equals( Barcos.tablero[i][j] ) ) {
+                else if ( tablero[i][j] == -2 ) {
                     System.out.print("| X ");
                 }
-                else if ( "O".equals( Barcos.tablero[i][j] ) ) {
+                else if (  tablero[i][j] == -1 ) {
                     System.out.print("| O ");
                 }
                 else {
@@ -153,7 +155,7 @@ public class Tablero {
     
     /**
      * Comprobamos el tablero y guardamos el valor correspondiente del disparo.
-     * X = falla, O = acierto. Enviamos un mensaje correspondiente al jugador.
+     * -2 = falla, -1 = acierto, 0 = Agua. Enviamos un mensaje correspondiente al jugador.
      */
     private static void realizarDisparo( String disparoOrdenado ) {
         
@@ -162,15 +164,15 @@ public class Tablero {
         // Le restamos 65 que es el valor de A en ASCII
         int disparoY = disparoOrdenado.charAt( 1 ) - 65;
         
-        if ( Barcos.tablero[ disparoX ][ disparoY ] == null ) {
-            Barcos.tablero[ disparoX ][ disparoY ] = "X";
+        if ( tablero[ disparoX ][ disparoY ] == 0 ) {
+            tablero[ disparoX ][ disparoY ] = -2;
             System.out.println("\nHas fallado, mas suerte en el proximo disparo...");
         }
-        else if ( "X".equals(Barcos.tablero[ disparoX ][ disparoY ]) ) {
+        else if ( tablero[ disparoX ][ disparoY ] == -2 | tablero[ disparoX ][ disparoY ] == -1 ) {
             System.out.println("\nYa has disparado en esa posicion, elige otra.");
         }
         else {
-            Barcos.tablero[ disparoX ][ disparoY ] = "O";
+            tablero[ disparoX ][ disparoY ] = -1;
             System.out.println("\nHas acertado!! Acaba con ellos!!");
         }
         
@@ -181,13 +183,13 @@ public class Tablero {
      * Comprobamos el numero de barcos que quedan en juego.
      * @return Numero de barcos restantes.
      */
-    public static int barcosRestantes() {
+    public int barcosRestantes() {
         
         int barcosRestantes = 0;
         
-        for ( int i = 0; i < Barcos.tablero.length; ++i ) {
-            for ( int j = 0; j < Barcos.tablero.length; ++j ) {
-                if ( "B".equals( Barcos.tablero[i][j] ) ) {
+        for ( int i = 0; i < tablero.length; ++i ) {
+            for ( int j = 0; j < tablero.length; ++j ) {
+                if (  tablero[i][j] == Barco1Casilla.getTipo() ) {
                     ++barcosRestantes;
                 }
             }

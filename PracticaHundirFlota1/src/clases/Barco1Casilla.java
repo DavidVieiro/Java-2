@@ -14,7 +14,7 @@ import java.util.Random;
 public class Barco1Casilla extends Barcos {
     
     // numero de casillas que ocupa el barco
-    private final byte TIPO = 1;
+    private static final byte TIPO = 1;
     @SuppressWarnings("FieldMayBeFinal")
     private int coordX;
     @SuppressWarnings("FieldMayBeFinal")
@@ -24,7 +24,7 @@ public class Barco1Casilla extends Barcos {
     private int barcosCreados = 0;
     
     /**
-     * Creamos un barco que ocupa 1 casilla en el tablero.
+     * Creamos un barco que ocupa 1 casilla en el tablero. Almacenamos el tipo de barco en el "tablero".
      */
     public Barco1Casilla() {
         do {
@@ -33,7 +33,7 @@ public class Barco1Casilla extends Barcos {
             this.coordY = randomCoord( MIN, MAX );
             
             if ( crearBarco( this.coordX, this.coordY ) ) {
-                tablero[ this.coordX ][ this.coordY ] = "B";
+                Tablero.tablero[ this.coordX ][ this.coordY ] = TIPO;
                 ++barcosCreados;
             }
 
@@ -44,9 +44,9 @@ public class Barco1Casilla extends Barcos {
     
     /**
      * Obtiene el tipo de barco. Numero de casillas que ocupa.
-     * @return 
+     * @return Numero de casillas que ocupa el barco.
      */
-    public byte getTipo() {
+    public static byte getTipo() {
         return TIPO;
     }
     
@@ -90,7 +90,7 @@ public class Barco1Casilla extends Barcos {
      */
     private boolean crearBarco( int coordX, int coordY) {
         
-        return tablero [ coordX ][ coordY ] == null;
+        return Tablero.tablero [ coordX ][ coordY ] == 0;
     }
     
 }

@@ -23,7 +23,7 @@ public class HundirFlota {
         // Creamos el tablero con los barcos
         Tablero partida1 = new Tablero();
         
-        System.out.println("\nSe han creado " + Tablero.barcosRestantes() + " barcos." );
+        System.out.println("\nSe han creado " + partida1.barcosRestantes() + " barcos." );
         
         do {
             System.out.println("\n\n");
@@ -31,10 +31,10 @@ public class HundirFlota {
 
             Tablero.dispararCannon();
             
-            System.out.println("\nBarcos restantes: " + Tablero.barcosRestantes() );
-        } while ( Tablero.barcosRestantes() != 0 );
+            System.out.println("\nBarcos restantes: " + partida1.barcosRestantes() );
+        } while ( partida1.barcosRestantes() != 0 );
         
-        if ( Tablero.barcosRestantes() == 0 ) {
+        if ( partida1.barcosRestantes() == 0 ) {
             System.out.println("\nENHORABUENA HAS DESTRUIDO TODOS LOS BARCOS DEL ENEMIGO!!!");
         }
     }
