@@ -15,9 +15,7 @@ public class Barco1Casilla extends Barcos {
     
     // numero de casillas que ocupa el barco
     private static final byte TIPO = 1;
-    @SuppressWarnings("FieldMayBeFinal")
     private int coordX;
-    @SuppressWarnings("FieldMayBeFinal")
     private int coordY;
     private final int MIN = 0;
     private final int MAX = 9;
@@ -71,7 +69,7 @@ public class Barco1Casilla extends Barcos {
      * @param max Numero maximo para generar. MAX = 9.
      * @return Devuelve el numero aleatorio entre 0 y 9.
      */
-    public static int randomCoord( int min, int max ) {
+    private static int randomCoord( int min, int max ) {
 
         Random numero = new Random();
         

@@ -17,6 +17,10 @@ public class Tablero {
     
     static BufferedReader teclado = new BufferedReader( new InputStreamReader( System.in ) );
     static int[][] tablero = new int[10][10];
+    // Cambiar esta opcion para ver los barcos generados en el tablero
+    // y otras cosas como las coordenadas de los barcos generados.
+    // TRUE se muestran, FALSE se ocultan.
+    static protected final boolean DEBUG = true;
     
     /**
      * Creamos los barcos en el tablero.
@@ -25,9 +29,9 @@ public class Tablero {
         // Creamos los 5 barcos
         Barco1Casilla barco1 = new Barco1Casilla();
         Barco1Casilla barco2 = new Barco1Casilla();
-        Barco1Casilla barco3 = new Barco1Casilla();
-        Barco1Casilla barco4 = new Barco1Casilla();
-        Barco1Casilla barco5 = new Barco1Casilla();
+        Barco2Casilla barco3 = new Barco2Casilla();
+        Barco2Casilla barco4 = new Barco2Casilla();
+        Barco2Casilla barco5 = new Barco2Casilla();
     }
     
     /**
@@ -44,20 +48,24 @@ public class Tablero {
         System.out.println("    | A | B | C | D | E | F | G | H | I | J |");
         System.out.println("---------------------------------------------");
             
-        for ( int i = 0; i < tablero.length; ++i ) {
-            System.out.print("| " + i + " ");
-            for ( int j = 0; j < tablero.length; ++j ) {
-                if ( tablero[i][j] == 0 ) {
+        for ( int x = 0; x < tablero.length; ++x ) {
+            System.out.print("| " + x + " ");
+            for ( int y = 0; y < tablero.length; ++y ) {
+                if ( tablero[ x ][ y ] == 0 ) {
                     System.out.print("|   ");
                 }
-                else if ( tablero[i][j] == 1 ) {
-                    System.out.print("|   ");
-                    //System.out.print("| " + tablero[i][j] + " " );
+                else if ( tablero[ x ][ y ] >= 1 ) {
+                    if ( !DEBUG ) {
+                        System.out.print("|   ");
+                    }
+                    else {
+                        System.out.print("| " + tablero[ x ][ y ] + " " );
+                    }
                 }
-                else if ( tablero[i][j] == -2 ) {
+                else if ( tablero[ x ][ y ] == -2 ) {
                     System.out.print("| X ");
                 }
-                else if (  tablero[i][j] == -1 ) {
+                else if (  tablero[ x ][ y ] == -1 ) {
                     System.out.print("| O ");
                 }
                 else {
@@ -66,6 +74,7 @@ public class Tablero {
             }
             System.out.println("|\n---------------------------------------------");
         }
+        
         
     }
     
@@ -81,7 +90,6 @@ public class Tablero {
         String disparo = teclado.readLine();
         
         if (comprobarDisparo( disparo ) ) {
-//            System.out.println("Disparo correcto. continua");
             disparoOrdenado = ordenarCoordenadas( disparo );
             realizarDisparo( disparoOrdenado );
         }
@@ -185,16 +193,21 @@ public class Tablero {
      */
     public int barcosRestantes() {
         
-        int barcosRestantes = 0;
+        int barcosRestantes1 = 0;
+        int barcosRestantes2 = 0;
         
-        for ( int i = 0; i < tablero.length; ++i ) {
-            for ( int j = 0; j < tablero.length; ++j ) {
-                if (  tablero[i][j] == Barco1Casilla.getTipo() ) {
-                    ++barcosRestantes;
+        for ( int x = 0; x < tablero.length; ++x ) {
+            for ( int y = 0; y < tablero.length; ++y ) {
+                if (  tablero[ x ][ y ] == Barco1Casilla.getTipo() ) {
+                    ++barcosRestantes1;
+                }
+                else if (tablero[ x ][ y ] == Barco2Casilla.getTipo()) {
+                    ++barcosRestantes2;
                 }
             }
         }
         
-        return barcosRestantes;
+        return barcosRestantes1 + ( barcosRestantes2 / 2);
     }
+    
 }

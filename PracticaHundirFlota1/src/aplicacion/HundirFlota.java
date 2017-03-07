@@ -24,6 +24,7 @@ public class HundirFlota {
         Tablero partida1 = new Tablero();
         
         System.out.println("\nSe han creado " + partida1.barcosRestantes() + " barcos." );
+        System.out.println("2 Submarinos y 3 Buques");
         
         do {
             System.out.println("\n\n");
