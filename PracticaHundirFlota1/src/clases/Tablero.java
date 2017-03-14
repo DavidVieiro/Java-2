@@ -27,8 +27,10 @@ public class Tablero {
      */
     public Tablero() {
         // Creamos los 5 barcos
+        // 2 Submarinos que ocupan 1 casilla
         Barco1Casilla barco1 = new Barco1Casilla();
         Barco1Casilla barco2 = new Barco1Casilla();
+        // 3 Buques que ocupan 2 casillas
         Barco2Casilla barco3 = new Barco2Casilla();
         Barco2Casilla barco4 = new Barco2Casilla();
         Barco2Casilla barco5 = new Barco2Casilla();
@@ -89,7 +91,7 @@ public class Tablero {
         System.out.println("\nElige las coordenadas donde crees que hay un barco:");
         String disparo = teclado.readLine();
         
-        if (comprobarDisparo( disparo ) ) {
+        if ( comprobarDisparo( disparo ) ) {
             disparoOrdenado = ordenarCoordenadas( disparo );
             realizarDisparo( disparoOrdenado );
         }
@@ -176,7 +178,7 @@ public class Tablero {
             tablero[ disparoX ][ disparoY ] = -2;
             System.out.println("\nHas fallado, mas suerte en el proximo disparo...");
         }
-        else if ( tablero[ disparoX ][ disparoY ] == -2 | tablero[ disparoX ][ disparoY ] == -1 ) {
+        else if ( tablero[ disparoX ][ disparoY ] < 0 ) {
             System.out.println("\nYa has disparado en esa posicion, elige otra.");
         }
         else {
@@ -191,10 +193,10 @@ public class Tablero {
      * Comprobamos el numero de barcos que quedan en juego.
      * @return Numero de barcos restantes.
      */
-    public int barcosRestantes() {
+    public float barcosRestantes() {
         
-        int barcosRestantes1 = 0;
-        int barcosRestantes2 = 0;
+        float barcosRestantes1 = 0;
+        float barcosRestantes2 = 0;
         
         for ( int x = 0; x < tablero.length; ++x ) {
             for ( int y = 0; y < tablero.length; ++y ) {
@@ -207,7 +209,7 @@ public class Tablero {
             }
         }
         
-        return barcosRestantes1 + ( barcosRestantes2 / 2);
+        return barcosRestantes1 + ( barcosRestantes2 / 2 );
     }
     
 }

@@ -5,8 +5,6 @@
  */
 package clases;
 
-import java.util.Random;
-
 /**
  *
  * @author dam132
@@ -61,22 +59,6 @@ public class Barco1Casilla extends Barcos {
      */
     public int getCoordY() {
         return coordY;
-    }
-    
-    /**
-     * Genera un numero entero entre el MIN y MAX establecidos. Se usa como parte de las coordenadas.
-     * @param min Numero minimo para generar. MIN = 0.
-     * @param max Numero maximo para generar. MAX = 9.
-     * @return Devuelve el numero aleatorio entre 0 y 9.
-     */
-    private static int randomCoord( int min, int max ) {
-
-        Random numero = new Random();
-        
-        int randomNum;
-        randomNum = numero.nextInt( ( max - min ) + 1 ) + min;
-
-        return randomNum;
     }
     
     /**

@@ -5,8 +5,6 @@
  */
 package clases;
 
-import java.util.Random;
-
 /**
  *
  * @author dam132
@@ -31,23 +29,17 @@ public class Barco2Casilla extends Barcos {
                 
             generarCoord();
             
-            if ( crearBarco(this.coordX0, this.coordY0 ) ) {
+            if ( crearBarco( this.coordX0, this.coordY0, this.coordX1, this.coordY1 ) ) {
                 Tablero.tablero[ this.coordX0 ][ this.coordY0 ] = TIPO;
-                if ( crearBarco(this.coordX1, this.coordY1 ) ) {
-                    try {
-                        Tablero.tablero[ this.coordX1 ][ this.coordY1 ] = TIPO;
-                        ++barcosCreados;
-                    } catch ( ArrayIndexOutOfBoundsException ex1 ) {
-                        
-                    }
-                }
+                Tablero.tablero[ this.coordX1 ][ this.coordY1 ] = TIPO;
+                ++barcosCreados;
             }
             if ( Tablero.DEBUG ) {
                 debugCoord();
             }
             
 
-        } while ( barcosCreados == 0);
+        } while ( barcosCreados == 0 );
         
     }
     
@@ -92,30 +84,22 @@ public class Barco2Casilla extends Barcos {
     }
     
     /**
-     * Genera un numero entero entre el MIN y MAX establecidos. Se usa como parte de las coordenadas.
-     * @param min Numero minimo para generar. MIN = 0.
-     * @param max Numero maximo para generar. MAX = 9.
-     * @return Devuelve el numero aleatorio entre 0 y 9.
-     */
-    private static int randomCoord( int min, int max ) {
-
-        Random numero = new Random();
-        
-        int randomNum;
-        randomNum = numero.nextInt( ( max - min ) + 1 ) + min;
-
-        return randomNum;
-    }
-    
-    /**
      * Comprobamos que el barco que se crea no exista ya en el tablero.
      * @param coordX Coordenada X.
      * @param coordY Coordenada Y.
      * @return Verdadero si el barco no existe en esa posicion.
      */
-    private boolean crearBarco( int coordX, int coordY ) {
+    private boolean crearBarco( int coordX0, int coordY0, int coordX1, int coordY1) {
         
-        return Tablero.tablero [ coordX ][ coordY ] == 0;
+        try {
+            if (Tablero.tablero [ coordX0 ][ coordY0 ] == 0
+             && Tablero.tablero [ coordX1 ][ coordY1 ] == 0) {
+                return true;
+            }
+        } catch ( ArrayIndexOutOfBoundsException ex1 ) {
+            System.out.println("EROR: " + ex1);
+        }
+        return false;
     }
     
     /**
@@ -129,7 +113,7 @@ public class Barco2Casilla extends Barcos {
         this.coordY0 = randomCoord( MIN, MAX );
         int delante;
         
-        if ( this.coordY0 == 0 | this.coordY0 == 9 && this.coordX0 == 0 | this.coordX0 == 9 ) {
+        if ( this.coordY0 >= 0 | this.coordY0 < 9 && this.coordX0 >= 0 | this.coordX0 < 9 ) {
             delante = 0;
         }
         else {
@@ -139,10 +123,8 @@ public class Barco2Casilla extends Barcos {
         // Vertical
         if ( vertical == 0 ) {
             if ( delante == 0 ) {
-
                 this.coordX1 = coordX0 + 1;
                 this.coordY1 = coordY0;
-
             }
             else {
                 this.coordX1 = coordX0 - 1;
@@ -152,10 +134,8 @@ public class Barco2Casilla extends Barcos {
         // Horizontal
         else {   
             if ( delante == 0 ) {
-
                 this.coordX1 = coordX0;
                 this.coordY1 = coordY0 + 1;
-
             }
             else {
                 this.coordX1 = coordX0;
@@ -165,6 +145,10 @@ public class Barco2Casilla extends Barcos {
         
     }
     
+    /**
+     * Funcion para mostrar las coordenadas de los barcos creados.
+     * Se muestra solo en modo DEBUG.
+     */
     private void debugCoord() {
         
         System.out.println("\n--- Coordenadas Barco ---");
