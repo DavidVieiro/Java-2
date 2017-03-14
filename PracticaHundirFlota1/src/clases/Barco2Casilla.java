@@ -17,8 +17,6 @@ public class Barco2Casilla extends Barcos {
     private int coordY0;
     private int coordX1;
     private int coordY1;
-    private final int MIN = 0;
-    private final int MAX = 9;
     private int barcosCreados = 0;
     
     /**
@@ -94,14 +92,15 @@ public class Barco2Casilla extends Barcos {
     private boolean crearBarco( int coordX0, int coordY0, int coordX1, int coordY1) {
         
         try {
-            if (Tablero.tablero [ coordX0 ][ coordY0 ] == 0
-             && Tablero.tablero [ coordX1 ][ coordY1 ] == 0) {
+            if ( Tablero.tablero [ coordX0 ][ coordY0 ] == 0
+              && Tablero.tablero [ coordX1 ][ coordY1 ] == 0 ) {
                 return true;
             }
         } catch ( ArrayIndexOutOfBoundsException ex1 ) {
-            System.out.println("EROR: " + ex1);
+            System.out.println("ERROR: " + ex1);
         }
         return false;
+        
     }
     
     /**

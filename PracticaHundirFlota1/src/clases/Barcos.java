@@ -16,6 +16,8 @@ public abstract class Barcos {
     // true = hundido / false = no hundido
     @SuppressWarnings("FieldMayBeFinal")
     private boolean estado;
+    protected final int MIN = 0;
+    protected final int MAX = 9;
     
     /**
      * Creamos un barco con los parametros comunes a todos los barcos.

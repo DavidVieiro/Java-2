@@ -77,7 +77,6 @@ public class Tablero {
             System.out.println("|\n---------------------------------------------");
         }
         
-        
     }
     
     /**

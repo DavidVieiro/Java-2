@@ -15,8 +15,6 @@ public class Barco1Casilla extends Barcos {
     private static final byte TIPO = 1;
     private int coordX;
     private int coordY;
-    private final int MIN = 0;
-    private final int MAX = 9;
     private int barcosCreados = 0;
     
     /**
