@@ -85,8 +85,10 @@ public class Barco2Casilla extends Barcos {
     
     /**
      * Comprobamos que el barco que se crea no exista ya en el tablero.
-     * @param coordX Coordenada X.
-     * @param coordY Coordenada Y.
+     * @param coordX0 Coordenada X inicial.
+     * @param coordY0 Coordenada Y inicial.
+     * @param coordX1 Coordenada X final.
+     * @param coordY1 Coordenada Y final.
      * @return Verdadero si el barco no existe en esa posicion.
      */
     private boolean crearBarco( int coordX0, int coordY0, int coordX1, int coordY1) {
