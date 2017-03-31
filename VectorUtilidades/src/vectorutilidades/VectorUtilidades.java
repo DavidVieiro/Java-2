@@ -11,8 +11,7 @@ import java.util.Random;
  * - Vector de maximo 100 elementos
  * - Se crea con enteros obtenidos de forma aleatoria no repes
  * - Metodos: devuelve el mayor
- *            calcula y devuelve suma de numeros 
- *            buscar UN valor
+ *            calcula y devuelve suma de numeros
  *            compara 2 vectores
  */
 public class VectorUtilidades {
@@ -26,41 +25,40 @@ public class VectorUtilidades {
      * @throws java.lang.Exception
      */
     public void llenarVector(int vector[]) throws Exception {
-
+        
         Random aleatorio = new Random();
         int n = Integer.MIN_VALUE;
-        //     System.out.println(vector.length);
+        //  System.out.println(vector.length);
         if (vector.length <= MAXIMO) {
             for (int i = 0; i < vector.length; i++) {
                 boolean existe = true;
                 while (existe) {
-                    n = aleatorio.nextInt(MAXIMO);     /* Siguiente valor aleatorio */
-
+                    n = aleatorio.nextInt(MAXIMO); /* Siguiente valor aleatorio */
                     existe = comprobar_existe(vector, n);
                 }
                 vector[i] = n;
             }
-
+            
         } else {
-            throw new Exception("Maximo 100 elementos");
+            throw new Exception("Maximo " + MAXIMO + " elementos");
         }
-
+        
     }
-
+    
     /**
      * @param vector
      * @return devuelve el mayor
      */
     public static int elMayor(int vector[]) {
         int mayor = Integer.MIN_VALUE;
-
+        
         for (int i = 0; i < vector.length; i++) {
             if (vector[i] > mayor) {
                 mayor = vector[i];
             }
-
+            
         }
-
+        
         return mayor;
     }
 
@@ -73,7 +71,7 @@ public class VectorUtilidades {
         for (int i = 0; i < vector.length; i++) {
             suma += vector[i];
         }
-
+        
         return suma;
     }
 
@@ -103,21 +101,21 @@ public class VectorUtilidades {
      * @return
      */
     public static boolean equals(int a[], int b[]) {
-
+        
         if ((a == null) || (b == null)) {
             throw new IllegalArgumentException("null argument");
         }
-
+        
         if (a.length != b.length) {
             return false;
         }
-
+        
         for (int i = 0; i < a.length; i++) {
             if (a[i] != b[i]) {
                 return false;
             }
         }
-
+        
         return true;
     }
 }
